@@ -1,0 +1,22 @@
+include doctype
+html
+    include head
+    body#demo-one
+        div.container
+            include header
+            div#main.row
+                //-导航栏
+                div#sidebar.col-sm-4
+                    nav#sidebar-nav
+                        ul
+                            li
+                                a#side-home.animated.bounceInLeft(href='#') Home
+                            li
+                                a#side-about.animated.bounceInLeft(href='#') About
+                            li
+                                a#side-work.animated.bounceInLeft(href='#') Work
+                            li
+                                a#side-contact.animated.bounceInLeft(href='#') Contact
+                //-正文
+                div#content.animated.bounceInUp.col-sm-8.text-center
+                    block content
