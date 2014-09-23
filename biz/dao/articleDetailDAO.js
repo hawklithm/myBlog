@@ -13,24 +13,30 @@ exports.saveArticleDetail=function(articleDetailDO){
         brief_view: articleDetailDO.briefView,
         option: articleDetailDO.option,
         gmt_create: new Date(),
-        gmt_modified: new Date()
+        gmt_modified: new Date(),
+        user_id: articleDetailDO.userId
     });
 };
-exports.selectArticleDetailByArticleCode=function(articleCode,resultSupport){
-    articleDetailDefine.define.find({where:{article_code:articleCode},attributes:articleDetailDefine.attr})
-        .complete(function(err,articleDetailDO){
+selectArticleDetailByCondition=function(condition,resultSupport){
+    articleDetailDefine.define.findAll(condition)
+        .complete(function(err,resultDO){
             if (!!err) {
                 console.log('An error occurred while searching for John:', err)
-            } else if (!articleDetailDO) {
+            } else if (!resultDO) {
                 console.log('No user with the username "john-doe" has been found.')
             } else {
-                var data=articleDetailDO.dataValues;
-//                console.log(JSON.stringify(data));
-//                console.log(data);
-//                console.log('title is ' + data.title );
-//                console.log('view is ' + data.briefView );
-//                console.log('article code is ', data.articleCode );
-                resultSupport(data);
+                var resultList=[];
+                for (var index in resultDO){
+                    resultList[index]=resultDO[index].dataValues;
+                }
+                resultSupport(resultList);
             }
         });
+};
+
+exports.selectArticleDetailByArticleCode=function(articleCode,resultSupport){
+    selectArticleDetailByCondition({where:{article_code:articleCode},attributes:articleDetailDefine.attr},resultSupport);
+};
+exports.selectArticleDetailByUserId=function(userId,resultSupport){
+    selectArticleDetailByCondition({where:{user_id:userId},attributes:articleDetailDefine.attr},resultSupport);
 };

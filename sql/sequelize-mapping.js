@@ -28,5 +28,6 @@ var attributes=[
     ,'option'
     ,['gmt_create','gmtCreate']
     ,['gmt_modified','gmtModified']
+    ,['user_id','userId']
 ];
 exports.articleDetailDefine={define:articleDetailDefine,attr:attributes};
