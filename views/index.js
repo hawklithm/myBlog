@@ -4,7 +4,7 @@
 var articleDetailManager=require('../biz/manager/articleDetailManager').articleDetailManagerService;
 
 function invoke(req,res,feature){
-    articleDetailManager.selectByUser(125423,function(briefViewsVO){
+    articleDetailManager.selectByUser('blueHawky',function(briefViewsVO){
         res.render('index',{
             articleBriefViewsVO:briefViewsVO
         });

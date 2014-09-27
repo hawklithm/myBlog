@@ -4,18 +4,18 @@
 extends includes/layout/layoutIndex
 
 block content
-    each briefView in articleBriefViewsVO
-        - var articleCode = briefView.articleCode
-        - var text = briefView.text
-        - var title = briefView.title
-        div.row
-            div.col-sm-4
-                img.img-responsive.animated.bounceInUp(src='http://lorempixel.com/500/500')
-            div.col-sm-8
-                div.postTitle
-                    a(href='#',id=articleCode)
-                        =title
-                div.postText
-                    =text
-                    a(href='#',id=articleCode)
-                        阅读全文
+        each briefView in articleBriefViewsVO
+            - var articleCode = briefView.articleCode
+            - var text = briefView.text
+            - var title = briefView.title
+            div.row
+                div.col-sm-4
+                    img.img-responsive.animated.bounceInUp(src='http://lorempixel.com/500/500')
+                div.col-sm-8
+                    div.postTitle
+                        a(href='#',id=articleCode,onclick='redirectToArticle(this)')
+                            =title
+                    div.postText
+                        =text
+                        a(href='#',id=articleCode,onclick='redirectToArticle(this)')
+                            阅读全文
