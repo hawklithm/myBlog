@@ -9,10 +9,10 @@ function invoke(req,res,feature) {
     if (articleCode == null) {
         res.end("no article");
     } else {
-        articleContentManagerService.selectByCode(articleCode, function (articleContentDO) {
+        articleContentManagerService.selectArticleByCode(articleCode, function (articleContentDO) {
             console.log(md.toHTML(articleContentDO));
             res.render('screen/article_show', {
-                detail: md.toHTML(articleContentDO)
+                detail: md.toHTML(articleContentDO.content)
             });
         });
     }

@@ -5,6 +5,9 @@
         "express": "~4.0.0",
         "jade":"*",
         "mysql":"*",
-        "sequelize":"*"
+        "sequelize":"*",
+        "markdown":"*",
+        "mogile":"0.2.2",
+        "log4js":"*"
     }
 }

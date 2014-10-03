@@ -19,7 +19,6 @@ function convertFromArticleDetailDOToBriefViewsVO(articleDetailDOs){
 }
 articleDetailManagerService.selectByUser=function(nickName,resultTrans){
     userInfoDao.selectUserByNickname(nickName,function(userInfoDO){
-//        console.log(userInfoDO);
         var id=userInfoDO.userId;
         selectArticleDetailByUserId(id,function(articleDetailDOs){
             resultTrans(convertFromArticleDetailDOToBriefViewsVO(articleDetailDOs));

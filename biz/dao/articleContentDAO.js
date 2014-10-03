@@ -1,8 +1,27 @@
 /**
  * Created by bluehawky on 14-9-27.
  */
+
+var domain = require('../../config/fs/mogilefs-config').domains['article'];
+var logger = require('../../config/log4j/log4j-config').logger;
+
 var articleContentDAO={};
-articleContentDAO.getArticleContentByCode=function(articleCode,resultSupport){
-    resultSupport("#这是h1\n##这是h2\n正文");
+articleContentDAO.getArticleContentByCode=function(articleCode, callback){
+    domain.getDataFromMogile(articleCode,function(err,data){
+        if (err){
+            logger.error("read data from fs error"+err);
+        }else{
+            callback(data);
+        }
+    });
 };
-exports.articleContentDAO=articleContentDAO;
+articleContentDAO.storeArticleContent=function(articleCode,className,msg, callback){
+    domain.storeDataToMogile(articleCode,className,msg,function(err , length){
+        if (err){
+            logger.error("store data to fs error"+err);
+        }else{
+            callback(length);
+        }
+    });
+};
+exports.articleContentDAO = articleContentDAO;

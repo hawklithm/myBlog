@@ -1,7 +1,7 @@
 /**
  * Created by bluehawky on 14-9-23.
  */
-userDefine=require('../../sql/sequelize-mapping').userDefine;
+userDefine=require('../../config/sql/sequelize-mapping').userDefine;
 selectByConditionBase=require('./daoBaseUtils').selectByConditionBase;
 exports.saveUserInfo=function(userInfoDO){
     userDefine.define.create({

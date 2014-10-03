@@ -4,6 +4,7 @@
 
 var handle={};
 handle["/"]=require("../views/index").invoke;
+handle["/article_show"]=require("../views/article/article_show").invoke;
 
 
 function route(pathname,request, response, feature) {
