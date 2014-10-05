@@ -1,5 +1,5 @@
 /**
- * Created by bluehawky on 14-9-27.
+ * Created by bluehawky on 14-10-3.
  */
 var md      = require('markdown').markdown;
 var articleContentManagerService    = require('../../biz/manager/articleContentManager').articleContentManagerService;
@@ -7,13 +7,12 @@ var articleContentManagerService    = require('../../biz/manager/articleContentM
 function invoke(req,res,feature) {
     var articleCode = req.query.code;
     if (articleCode == null) {
-        res.end("no article");
+        res.render("screen/article_editor");
     } else {
         articleContentManagerService.selectArticleByCode(articleCode, function (articleContentDO) {
-            console.log(articleContentDO);
-            console.log(md.toHTML(articleContentDO.content));
-            res.render('screen/article_show', {
-                detail: md.toHTML(articleContentDO.content)
+            res.render('screen/article_editor', {
+                detail: articleContentDO.content,
+                title : articleContentDO.info.title
             });
         });
     }

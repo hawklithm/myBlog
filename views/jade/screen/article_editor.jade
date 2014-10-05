@@ -1,0 +1,14 @@
+//
+   Created by bluehawky on 14-10-4.
+extends ../includes/layout/layoutIndex
+
+block content
+        form#articleContent(action='article.input',method='post')
+            textarea#title(name='title',row='1',cols='20')
+                !{title}
+            br
+            textarea#detail(name='detail',rows='3',cols='20')
+                !{detail}
+            br
+            input(id='article_code',type='hidden',value=code)
+            input.save(type='submit',value='保存')

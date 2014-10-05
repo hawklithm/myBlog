@@ -3,5 +3,5 @@
  */
 function redirectToArticle(obj){
     console.log(obj.id);
-    window.location.assign('/article_show?code=eadf');
+    window.location.assign('/article_show?code='+obj.id);
 }
