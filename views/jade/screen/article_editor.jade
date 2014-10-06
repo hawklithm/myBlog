@@ -12,3 +12,11 @@ block content
             br
             input(id='article_code',type='hidden',value=code)
             input.save(type='submit',value='保存')
+        form
+            input(name='title', type='text', placeholder='Title?')
+            textarea(name='content', data-provide='markdown', rows='10')
+            label.checkbox
+                input(name='publish', type='checkbox')
+                | Publish
+            hr
+            button.btn(type='submit') Submit
