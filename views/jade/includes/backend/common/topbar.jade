@@ -1,0 +1,59 @@
+//
+   Created by bluehawky on 14-10-9.
+
+#topbar
+    .container
+        a#menu-trigger.dropdown-toggle(href='javascript:;', data-toggle='dropdown', data-target='#')
+            i.icon-cog
+        #top-nav
+            ul
+                li.dropdown
+                    a.dropdown-toggle(href='javascript:;', data-toggle='dropdown')
+                        | View Your Site
+                        b.caret
+                    ul.dropdown-menu.pull-right
+                        li
+                            a(href='javascript:;') View Site #1
+                        li
+                            a(href='javascript:;') View Site #2
+                        li.dropdown-submenu
+                            a(tabindex='-1', href='#') Dropdown menu
+                            ul.dropdown-menu
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+            ul.pull-right
+                li
+                    a(href='javascript:;')
+                        i.icon-user
+                        | Logged in as John Doe
+                li
+                    a(href='javascript:;')
+                        span.badge.badge-primary 1
+                        | New Message
+                li.dropdown
+                    a.dropdown-toggle(href='./pages/settings.html', data-toggle='dropdown')
+                        | Settings
+                        b.caret
+                    ul.dropdown-menu.pull-right
+                        li
+                            a(href='javascript:;') Settings #1
+                        li
+                            a(href='javascript:;') Settings #2
+                        li.dropdown-submenu
+                            a(tabindex='-1', href='#') Dropdown menu
+                            ul.dropdown-menu
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+                                li
+                                    a(tabindex='-1', href='#') Second level link
+                li
+                    a(href='login.html') Logout
+        // /#top-nav
+    // /.container
+// /#topbar
