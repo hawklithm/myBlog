@@ -1,0 +1,96 @@
+//
+   Created by bluehawky on 14-10-9.
+extends ../template/default
+block mainbody
+    div#content
+        div.container
+            div.row
+                div.span4
+                    h3 Welcome back, Admin.
+                    p
+                        | You are currently signed up to the Free Trial Plan.
+                        br
+                        a(href='javascript:;') Upgrade your plan today
+                        | .
+                    table.table.stat-table
+                        tbody
+                            tr
+                                td.value 789
+                                td.full 今天访问
+                            tr
+                                td.value 634
+                                td.full 独立访问
+                            tr
+                                td.value 13
+                                td.full 评论数量
+                            tr
+                                td.value 17
+                                td.full 帮助支持
+                // /.span4
+                div.span8
+                    div#line-chart.chart-holder
+                    // /#bar-chart
+                // /.span8
+            // /.row
+            div.row
+                div.span5
+                    h3.title 销售统计
+                    div#donut-chart.chart-holder
+                    // /#donut-chart
+                // /.span5
+                div.span7
+                    h3.title 帮助支持
+                    table.table
+                        thead
+                            tr
+                                th 标签
+                                th 主题
+                                th 用户
+                        tbody
+                            tr
+                                td
+                                    span.label.label-primary Open
+                                td.full
+                                    a(href='#') Lorem ipsum dolor sit amet
+                                td.who Posted by Bill
+                            tr
+                                td
+                                    span.label.label-primary Open
+                                td.full
+                                    a(href='#') Consectetur adipiscing
+                                td.who Posted by Pam
+                            tr
+                                td
+                                    span.label.label-primary Open
+                                td.full
+                                    a(href='#') Sed in porta lectus maecenas
+                                td.who Posted by Curtis
+                            tr
+                                td
+                                    span.label.label-danger Closed
+                                td.full
+                                    a(href='#') Dignissim enim
+                                td.who Posted by John
+                            tr
+                                td
+                                    span.label.label-secondary Responded
+                                td.full
+                                    a(href='#') Duis nec rutrum lorem
+                                td.who Posted by James
+                            tr
+                                td
+                                    span.label.label-danger Closed
+                                td.full
+                                    a(href='#') Maecenas id velit et elit
+                                td.who Posted by Sam
+                            tr
+                                td
+                                    span.label.label-secondary Responded
+                                td.full
+                                    a(href='#') Duis nec rutrum lorem
+                                td.who Posted by Carlos
+                // /.span7
+            // /.row
+        // /.container
+    // /#content
+
