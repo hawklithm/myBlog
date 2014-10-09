@@ -3,19 +3,16 @@
  */
 
 var handle={};
-handle["/"] = require("../views/index").invoke;
-handle["/article_show"] = require("../views/article/article_show").invoke;
-handle["/article_editor"] = require("../views/article/article_editor").invoke;
-handle["/login"] = require("../views/user/login").invoke;
-
-var inputHandle={};
-inputHandle["/article.input"] = require("../views/input/article_input").invoke;
-inputHandle["/login.input"] = require("../views/user/login").inputInvoke;
+var _managerBaseDir = "../views/manager/";
+var _jadeBaseDir = "includes/backend/screen/";
+handle["/"] = require(_managerBaseDir+"index").invoke;
+handle["/index"] = require(_managerBaseDir+"index").invoke;
 
 
 function route(pathname,request, response, feature) {
-    console.log("About to route a request for " + pathname);
+    console.log("manage: About to route a request for " + pathname);
     if (typeof handle[pathname] === 'function') {
+        feature.jadeDir = _jadeBaseDir;
         handle[pathname](request,response, feature);
     } else {
         console.log("No request handler found for " + pathname);
@@ -23,15 +20,4 @@ function route(pathname,request, response, feature) {
     }
 }
 
-function inputRoute(pathname,request, response, feature) {
-    console.log("About to route a post request for " + pathname);
-    if (typeof inputHandle[pathname] === 'function') {
-        inputHandle[pathname](request,response, feature);
-    } else {
-        console.log("No request handler found for " + pathname);
-        response.end("404 Not found");
-    }
-}
-
 exports.routes=route;
-exports.inputRoute=inputRoute;

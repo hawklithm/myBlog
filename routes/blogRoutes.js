@@ -14,7 +14,7 @@ inputHandle["/login.input"] = require("../views/user/login").inputInvoke;
 
 
 function route(pathname,request, response, feature) {
-    console.log("About to route a request for " + pathname);
+    console.log("blog get: About to route a request for " + pathname);
     if (typeof handle[pathname] === 'function') {
         handle[pathname](request,response, feature);
     } else {
@@ -24,7 +24,7 @@ function route(pathname,request, response, feature) {
 }
 
 function inputRoute(pathname,request, response, feature) {
-    console.log("About to route a post request for " + pathname);
+    console.log("blog post: About to route a post request for " + pathname);
     if (typeof inputHandle[pathname] === 'function') {
         inputHandle[pathname](request,response, feature);
     } else {

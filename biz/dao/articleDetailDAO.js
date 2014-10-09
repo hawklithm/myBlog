@@ -7,7 +7,7 @@ selectByConditionBase=require('./daoBaseUtils').selectByConditionBase;
 exports.saveArticleDetail=function(articleDetailDO){
     articleDetailDefine.define.create({
         article_code: articleDetailDO.articleCode,
-        article_file_url: articleDetailDO.articleFileUrl,
+        article_file_url: null,
         type: articleDetailDO.type,
         status:1,
         title: articleDetailDO.title,

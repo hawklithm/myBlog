@@ -2,7 +2,7 @@
  * Created by bluehawky on 14-9-27.
  */
 
-var domain = require('../../config/fs/mogilefs-config').domains['article'];
+var domain = require('../../config/fs/mogilefs-config').domains['articles'];
 var logger = require('../../config/log4j/log4j-config').logger;
 
 var articleContentDAO={};
@@ -20,7 +20,7 @@ articleContentDAO.storeArticleContent=function(articleCode,className,msg, callba
         if (err){
             logger.error("store data to fs error"+err);
         }else{
-            callback(length);
+            callback(err,length);
         }
     });
 };

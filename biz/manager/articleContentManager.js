@@ -4,6 +4,7 @@
 
 var articleContentDAO=require('../dao/articleContentDAO').articleContentDAO;
 var articleDetailDAO = require('../dao/articleDetailDAO');
+var md5 = require('MD5');
 
 var articleContentManagerService={};
 
@@ -28,14 +29,25 @@ articleContentManagerService.selectArticleByCode=function(code,resultTrans){
     });
 };
 articleContentManagerService.saveArticle = function(userId,title,code,type,data,resultTrans){
-    articleContentDAO.storeArticleContent(code,'level1',data,function(length){
-        articleDetailDAO.saveArticleDetail({
-            userId:userId,
-            articleCode:code,
-            type:type,
-            title:title,
-            briefView : getArticleBriefView(data)
-        });
+    if (code==null){
+        code = md5(userId+title+type+data);
+    }
+    articleContentDAO.storeArticleContent(code,'level1',data,function(err,length){
+        if (err){
+            console.log('something error where save the data to mogilefs');
+        }else {
+            if (type == null) {
+                type = 0;
+            }
+            articleDetailDAO.saveArticleDetail({
+                userId: userId,
+                articleCode: code,
+                type: type,
+                title: title,
+                briefView: getArticleBriefView(data)
+            });
+        }
+        resultTrans(err, code);
     })
 };
 exports.articleContentManagerService=articleContentManagerService;
