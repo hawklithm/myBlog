@@ -7,6 +7,7 @@ var _managerBaseDir = "../views/manager/";
 var _jadeBaseDir = "includes/backend/screen/";
 handle["/"] = require(_managerBaseDir+"index").invoke;
 handle["/index"] = require(_managerBaseDir+"index").invoke;
+handle["/edit"] = require(_managerBaseDir+"articleEditor").invoke;
 
 
 function route(pathname,request, response, feature) {
