@@ -9,14 +9,14 @@ function invoke(req,res,feature) {
     console.log(req.body.title);
     console.log(req.body.detail);
     var title = req.body.title;
-    var detail = req.body.detail;
+    var detail = req.body.content;
     var code = req.body.code;
     var type = req.body.type;
     articleContentManagerService.saveArticle(125125,title,code,type,detail,function(err,articleCode){
         if (err){
         }else{
             res.writeHead(302, {
-                'Location': '/article_show?code='+articleCode
+                'Location': '/blog/article_show?code='+articleCode
             });
             res.end();
         }

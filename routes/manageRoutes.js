@@ -12,6 +12,10 @@ handle["/edit"] = require(_managerBaseDir+"articleEditor").invoke;
 
 function route(pathname,request, response, feature) {
     console.log("manage: About to route a request for " + pathname);
+    var userId = request.session.user_id;
+    if (userId==null){
+        
+    }
     if (typeof handle[pathname] === 'function') {
         feature.jadeDir = _jadeBaseDir;
         handle[pathname](request,response, feature);
