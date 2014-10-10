@@ -19,8 +19,10 @@ block mainbody
         //    input.save(type='submit',value='保存')
         //// /.articleContent
         form
-            input(name='title', type='text', placeholder='Title?')
+            -var t = !title
+            input(name='title', type='text', placeholder='Title?',value=t)
             textarea(name='content', data-provide='markdown', rows='10')
+                !{detail}
             label.checkbox
                 input(name='publish', type='checkbox')
                 | Publish

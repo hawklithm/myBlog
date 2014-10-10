@@ -1,7 +1,6 @@
 /**
  * Created by bluehawky on 14-10-3.
  */
-var md      = require('markdown').markdown;
 var articleContentManagerService    = require('../../biz/manager/articleContentManager').articleContentManagerService;
 
 function invoke(req,res,feature) {
