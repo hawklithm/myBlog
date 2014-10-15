@@ -1,0 +1,22 @@
+//
+   Created by bluehawky on 14-10-15.
+
+extends ../includes/layout/layoutlogin
+block loginBox
+    .row
+        .span4.offset4
+            .well
+                legend Sign in to WebApp
+                form#registForm(method='POST', action='/regist.input', accept-charset='UTF-8', onsubmit="return submit()")
+                    .alert.alert-error
+                        a.close(data-dismiss='alert', href='#') x
+                        | 用户名已存在已存在
+                    input.span3(placeholder='Username', type='text', name='username')
+                    input.span3(placeholder='Password', type='password', name='password')
+                    button.btn-info.btn(type='submit') Login
+    script(language='JavaScript').
+        function submit(){
+            var form = document.getElementById("registForm");
+            form.password.value = calcMD5(form.password.value);
+            return true;
+        }

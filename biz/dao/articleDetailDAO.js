@@ -21,10 +21,30 @@ exports.saveArticleDetail=function(articleDetailDO){
 
 
 exports.selectArticleDetailByArticleCode=function(articleCode,resultSupport){
-    selectByConditionBase(articleDetailDefine.define,{where:{article_code:articleCode},attributes:articleDetailDefine.attr},function(resultList){
+    selectByConditionBase(articleDetailDefine.define,{where:{article_code:articleCode},attributes:articleDetailDefine.attr},function(err,resultList){
+        if (err) {
+            if (err == 'no_data') {
+                resultSupport(null,null);
+            }else{
+                resultSupport('select article by code Error');
+            }
+        } else {
+            resultSupport(null,resultList[0]);
+        }
         resultSupport(resultList[0]);
     });
 };
 exports.selectArticleDetailByUserId=function(userId,resultSupport){
-    selectByConditionBase(articleDetailDefine.define,{where:{user_id:userId},attributes:articleDetailDefine.attr},resultSupport);
+    selectByConditionBase(articleDetailDefine.define,{where:{user_id:userId},attributes:articleDetailDefine.attr},function(err,resultList){
+        if (err) {
+            if (err == 'no_data') {
+                resultSupport(null,null);
+            }else{
+                resultSupport('select article by user_id Error');
+            }
+        } else {
+            resultSupport(null,userInfoList);
+        }
+    });
+
 };

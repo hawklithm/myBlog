@@ -13,6 +13,9 @@ inputHandle["/article.input"] = require("../views/input/article_input").invoke;
 inputHandle["/login.input"] = require("../views/user/login").inputInvoke;
 
 
+var errorPageRoute = require("./errorPageRoutes").invoke;
+
+
 function route(pathname,request, response, feature) {
     console.log("blog get: About to route a request for " + pathname);
     if (typeof handle[pathname] === 'function') {
@@ -25,6 +28,17 @@ function route(pathname,request, response, feature) {
 
 function inputRoute(pathname,request, response, feature) {
     console.log("blog post: About to route a post request for " + pathname);
+    if(pathname=='regist.input'){
+
+    }
+    var userId = request.session.user_id;
+    if (userId==null){
+        if (feature==null){
+            feature={};
+        }
+        feature.error_code = errorPageRoute.error_constants.LOGIN_ERROR;
+        errorPageRoute(pathname,request,response,feature);
+    }
     if (typeof inputHandle[pathname] === 'function') {
         inputHandle[pathname](request,response, feature);
     } else {
