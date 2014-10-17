@@ -6,7 +6,7 @@ var error_constants={LOGIN_ERROR:'login_error',ERROR:'error'};
 
 var routeList={};
 routeList['login_error'] = require('../views/user/login').invoke;
-routeList['error'] = require().invoke;
+//routeList['error'] = require().invoke;
 
 exports.invoke=function(pathName,req,res,feature){
     if (typeof routeList[feature.error_code] === 'function'){

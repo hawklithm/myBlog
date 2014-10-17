@@ -3,6 +3,9 @@
  */
 
 var userInfoDao = require('../../biz/dao/userInfoDAO').userInfoDAO;
+var errorPageRoute = require("../../routes/errorPageRoutes").invoke;
+var errorConstants = require("../../routes/errorPageRoutes").error_constants;
+
 function invoke(req,res,feature) {
     res.render('screen/register', {
         errorCode : feature.error_code
@@ -15,19 +18,31 @@ function inputInvoke(req,res,feature){
     console.log("body",JSON.stringify(req.body));
     console.log("user name: "+ username);
     console.log("passwdMD5: "+ passwdMD5);
-    userInfoDao.selectUserByNickname(username,function(err,userInfo){
-        if (err){
-            console.log('select user error when check user exist');
-        }else if (userInfo==null){
-            userInfoDao.saveUserInfo({username:username,option:0,feature:""})
-        }else{
-            console.log('username has exist');
-        }
-    });
+    var network_range_ok = false;
     var clientIp=getClientIp(req);
     if (clientIp == '127.0.0.1'){
-        console.log('ok');
+        network_range_ok=true;
     }
+    if (network_range_ok) {
+        userInfoDao.selectUserByNickname(username, function (err, userInfo) {
+            if (err) {
+                console.log('select user error when check user exist');
+            } else if (userInfo == null) {
+                userInfoDao.saveUserInfo({username: username, option: 0, feature: "",password:passwdMD5})
+                console.log("create user "+username);
+            } else {
+                console.log('username has exist');
+                if (feature == null) {
+                    feature = {};
+                }
+                feature.error_code = errorConstants.LOGIN_ERROR;
+                errorPageRoute('login_error', req, res, feature);
+            }
+        });
+    }else{
+
+    }
+
 //    console.log("client ip: "+ clientIp);
 }
 function getClientIp(req) {

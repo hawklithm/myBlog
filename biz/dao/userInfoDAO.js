@@ -38,7 +38,8 @@ userInfoDAO.saveUserInfo=function(userInfoDO){
         option: userInfoDO.option,
         feature: userInfoDO.feature,
         gmt_create: new Date(),
-        gmt_modified: new Date()
+        gmt_modified: new Date(),
+        password: userInfoDO.password
     });
 };
 

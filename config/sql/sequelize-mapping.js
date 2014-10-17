@@ -41,7 +41,8 @@ exports.userDefine={
         option: Sequelize.INTEGER,
         feature: Sequelize.STRING,
         gmt_create: Sequelize.DATE,
-        gmt_modified: Sequelize.DATE
+        gmt_modified: Sequelize.DATE,
+        password: Sequelize.STRING
     },{
         tableName: 'user_info',
         underscored: true,
@@ -54,6 +55,7 @@ exports.userDefine={
         ['user_id','userId']
         ,['nick_name','nickname']
         ,'option'
-        ,'feature'
+        ,'feature',
+        ['passwd','password']
     ]
 };
